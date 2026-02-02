@@ -1,101 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour Maelie 💖</title>
-
-<style>
-body {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-h1 { color: #ff4d6d; margin-bottom: 10px; }
-
-p { color: #555; font-size: 16px; margin-bottom: 15px; }
-
-/* Style des champs */
-input, select {
-    padding: 12px;
-    width: 90%;
-    border-radius: 10px;
-    border: 1px solid #ffccd5; /* Bordure légèrement rosée */
-    margin-bottom: 15px;
-    font-size: 16px;
-    background-color: #fff0f3; /* Fond très léger rose */
-    color: #333;
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: #ff4d6d;
-    background-color: white;
-}
-
-button {
-    margin-top: 10px;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 25px;
-    background: #ff4d6d;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
-}
-
-button:hover { 
-    background: #e63b5d; 
-    transform: scale(1.05); 
-}
-
-/* Animation de succès cachée au début */
-#success-message { display: none; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Maelie 💖</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
 <div class="card">
-    <form id="valentineForm" name="valentine-maelie" method="POST" data-netlify="true">
+    <form id="valentineForm" name="valentine-maelie">
         
         <div id="form-content">
             <h1>Coucou Maelie 💖</h1>
-
             <p>J’ai une question très importante pour toi…</p>
-
-            <input type="hidden" name="form-name" value="valentine-maelie" />
-
-            <input type="text" name="prenom" value="Maelie" required>
-
             <p>Est-ce que tu m’aimes ?</p>
             <select name="amour">
                 <option>Oui 💕</option>
-                <option>Évidemment 😘</option>
-                <option>À la folie 💫</option>
+                <option>Non 💫</option>
             </select>
 
             <p>Veux-tu être ma Valentine ?</p>
             <select name="valentine">
-                <option>OUI 🥰</option>
-                <option>OUI (absolument) ❤️‍🔥</option>
+                <option>Oui 🥰</option>
+                <option>Absolument pas</option>
             </select>
 
             <button type="submit">Envoyer ma réponse 💌</button>
@@ -103,34 +31,12 @@ button:hover {
     </form>
 
     <div id="success-message">
-        <h1>💖 Trop hâte ! 💖</h1>
-        <p>Je savais que tu dirais oui 🥰</p>
-        <p>Prépare-toi pour une belle soirée.</p>
+        <h1>💖 Merci pour ta réponse ! 💖</h1>
+        <p>Hâte de voir ce que tu as répondu.</p>
         <p style="font-size: 40px;">🥂🌹</p>
     </div>
 </div>
 
-<script>
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        const myForm = event.target;
-        const formData = new FormData(myForm);
-        
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
-        })
-        .then(() => {
-            document.getElementById("form-content").style.display = "none";
-            document.getElementById("success-message").style.display = "block";
-        })
-        .catch((error) => alert(error));
-    };
-    
-    document.querySelector("form").addEventListener("submit", handleSubmit);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
